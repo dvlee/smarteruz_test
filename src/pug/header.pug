@@ -1,1 +1,90 @@
-.header
+.header__primary
+	.container
+		.header__content
+			a.header__logo(href="/")
+				img(src="images/logo.svg", alt="KUN.UZ")
+
+			.menu-btn
+				span
+				span
+				span
+
+			.currency-rates
+				span.currency-rates__sign.ico.ico-usd
+				| 8400
+				span.currency-rates__change.ico.ico-arrow-down
+			.currency-rates
+				span.currency-rates__sign.ico.ico-rub
+				| 130
+				span.currency-rates__change.ico.ico-arrow-up
+			.currency-rates
+				span.currency-rates__sign.ico.ico-eur
+				| 9400
+				span.currency-rates__change.ico.ico-arrow-down
+				
+			.weather
+				img.weather__icon(src="images/sun.png", alt="sunny")
+				span.weather__city Ташкент:&nbsp;
+				span.weather__celsius +20&deg;
+				a.weather__cursor(href="")
+					img(src="images/cursor.svg", alt="")
+			
+			.langs
+				.langs__selected
+					img.langs__flag(src="images/ru.png", alt="Russian")
+					span.langs__code RU
+					span.ico.ico-angle-down
+				.langs__list
+					a(href="").langs__list-item
+						img.langs__flag(src="images/ru.png", alt="Russian")
+						span.langs__name Русский
+					a(href="").langs__list-item
+						img.langs__flag(src="images/ru.png", alt="Russian")
+						span.langs__name English
+
+			form.form.form-search(method="get", action="/search")
+				.form__row
+					input.form__input(type="text", placeholder="Поиск", name="q")
+					button.form__submit(type="submit")
+						span.ico.ico-zoom
+
+
+			.user-menu
+				a.user-menu__login-btn(href="#") Войти
+
+.header__secondary
+	.container
+		.header__content
+			.langs
+				.langs__selected
+					img.langs__flag(src="images/ru.png", alt="Russian")
+					span.langs__code RU
+					span.ico.ico-angle-down
+				.langs__list
+					a(href="").langs__list-item
+						img.langs__flag(src="images/ru.png", alt="Russian")
+						span.langs__name Русский
+					a(href="").langs__list-item
+						img.langs__flag(src="images/ru.png", alt="Russian")
+						span.langs__name English
+
+			form.form.form-search(method="get", action="/search")
+				.form__row
+					input.form__input(type="text", placeholder="Поиск", name="q")
+					button.form__submit(type="submit")
+						span.ico.ico-zoom
+
+.menu
+	.container
+		nav.nav
+			a.nav__link(href="") Главная
+			a.nav__link(href="") Политика
+			a.nav__link(href="") Общество
+			a.nav__link(href="") Экономика
+			a.nav__link(href="") В мире
+			a.nav__link(href="") Спорт
+			a.nav__link(href="") Происшествия
+			a.nav__link(href="") Культура
+			a.nav__link(href="") Наука
+			a.nav__link(href="") Авто
+			a.nav__link(href="") Технологии

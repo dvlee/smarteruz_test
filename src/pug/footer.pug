@@ -1,1 +1,16 @@
 .footer
+	.container
+		.footer__content
+			.copyrights &copy;2018 Название
+
+			nav.nav
+				a(href="").nav__link Реклама
+				a(href="").nav__link Помощь
+				a(href="").nav__link Контакты
+			
+			form.form.form-subscribe(method="post", action="/subscribe")
+				.form__row
+					label(for="") E-mail рассылка:
+					input.form__input(type="email", placeholder="Ваша почта", name="email")
+					button.form__submit(type="submit")
+						.ico.ico-angle-right

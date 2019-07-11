@@ -3,12 +3,14 @@ let pug = require("gulp-pug");
 let sass = require("gulp-sass");
 let browserSync = require("browser-sync");
 let babel = require("gulp-babel");
-let plumber = require("gulp-plumber");
 let sourcemaps = require("gulp-sourcemaps");
-let imagemin = require("gulp-imagemin");
 let autoprefixer = require("gulp-autoprefixer");
 let uglify = require("gulp-uglify");
-let concat = require("gulp-concat");
+let del = require("del");
+
+gulp.task('clean', () => {
+    return del('dist');
+})
 
 gulp.task('copy', () => {
     return gulp.src(['src/resources/**/*.*'])
@@ -24,9 +26,11 @@ gulp.task('pug', () => {
 gulp.task('scss', () => {
     return gulp.src(['src/scss/*.scss'])
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({
+            outputStyle: 'compressed'
+            }).on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 3 versions'],
             cascade: false
         }))
         .pipe(sourcemaps.write('.'))
@@ -39,16 +43,9 @@ gulp.task('js', () => {
         .pipe(babel({
             presets: ['@babel/env']
         }))
-        .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
-});
-
-gulp.task('images', () => {
-    return gulp.src(['src/images/**/*.*'])
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/images'))
 });
 
 
@@ -56,11 +53,11 @@ gulp.task('watch', () => {
     gulp.watch(['src/index.pug', 'src/pug/**/*.pug'], gulp.series('pug'));
     gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
     gulp.watch('src/js/**/*.js', gulp.series('js'));
-    gulp.watch('src/images/**/*.*', gulp.series('images'));
+    gulp.watch('src/resources/**/*.*', gulp.series('copy'));
 });
 
 
-gulp.task("build", gulp.series(["pug", "scss", "js", "images", "copy"]));
+gulp.task("build", gulp.series(["clean", "pug", "scss", "js", "copy"]));
 
 gulp.task('server', function () {
     browserSync.init({
