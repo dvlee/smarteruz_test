@@ -1,7 +1,9 @@
-let langSwitcher = document.querySelector('.langs__selected');
-langSwitcher.addEventListener('click', () => {
-	let langs = langSwitcher.parentNode;
-	langs.classList.toggle('open');
+let langSwitcher = document.querySelectorAll('.langs__selected');
+langSwitcher.forEach(btn => {
+	btn.addEventListener('click', () => {
+		let langs = btn.parentNode;
+		langs.classList.toggle('open');
+	})
 })
 
 
