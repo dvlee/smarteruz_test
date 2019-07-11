@@ -1,0 +1,18 @@
+mixin newsItem(category, category_color='', date, title, text='', author = 'Kun.uz')
+	.news__item
+		img.news__image(src="https://via.placeholder.com/746x555?text=" + category, alt= category)
+		.news__info
+			if category_color == ''
+				.news__category= category
+			else
+				.news__category(class="news__category--" + category_color)= category
+			.news__info-divider Ӏ
+			.news__date 
+				span.ico.ico-calendar
+				= date
+			.news__author
+				span.ico.ico-internet
+				= author
+		a(href="").news__title= title
+		if text != ''
+			.news__text= text
